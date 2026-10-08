@@ -2,7 +2,6 @@ from models import LiquorModel
 from typing import List, Optional
 
 class LiquorRepository:
-    """Responsabilidad Única: Consultas ORM Peewee (Consultas Parametrizadas Anti-SQLi)"""
 
     @staticmethod
     def get_all() -> List[LiquorModel]:

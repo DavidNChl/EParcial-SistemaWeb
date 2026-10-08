@@ -1,0 +1,7 @@
+fastapi==0.110.0
+uvicorn==0.28.0
+peewee==3.17.1
+passlib[bcrypt]==1.7.4
+pydantic==2.6.4
+pip install fastapi uvicorn peewee passlib pydantic bcrypt
+uvicorn main:app --reload

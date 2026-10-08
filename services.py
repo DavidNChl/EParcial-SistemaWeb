@@ -3,7 +3,6 @@ from repository import LiquorRepository
 from schemas import LiquorCreateSchema, LiquorUpdateSchema
 
 class LiquorService:
-    """Responsabilidad Única: Reglas de negocio y sanitización de datos"""
 
     @staticmethod
     def sanitize(text: str) -> str:
@@ -21,7 +20,7 @@ class LiquorService:
                 "precio": item.precio,
                 "stock": item.stock,
                 "grado_alcohol": item.grado_alcohol,
-                "stock_critico": item.stock < 5 # Regla de negocio
+                "stock_critico": item.stock < 5 
             }
             for item in items
         ]

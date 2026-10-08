@@ -1,15 +1,11 @@
-from peewee import Model, CharField, FloatField, IntegerField, DateTimeField
 import datetime
+from peewee import Model, CharField, FloatField, IntegerField, DateTimeField
 from database import db
-from passlib.context import CryptContext
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class BaseModel(Model):
     class Meta:
         database = db
 
-# Entidad Licor
 class LiquorModel(BaseModel):
     nombre = CharField()
     categoria = CharField()
@@ -20,18 +16,3 @@ class LiquorModel(BaseModel):
 
     class Meta:
         table_name = 'licores'
-
-# Entidad Usuario con Hashing de Contraseñas (OWASP)
-class UserModel(BaseModel):
-    email = CharField(unique=True)
-    password_hash = CharField()
-
-    @staticmethod
-    def hash_password(password: str) -> str:
-        return pwd_context.hash(password)
-
-    def verify_password(self, password: str) -> bool:
-        return pwd_context.verify(password, self.password_hash)
-
-    class Meta:
-        table_name = 'usuarios'
